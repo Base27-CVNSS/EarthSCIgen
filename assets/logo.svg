@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">EarthSCIgen</title>
+  <rect width="64" height="64" rx="16" fill="#17233d"/>
+  <path d="M13 18h38v6H13zm0 11h27v6H13zm0 11h38v6H13z" fill="#f7f4ed"/>
+  <path d="M43 29h8v6h-8z" fill="#f0642d"/>
+  <circle cx="48" cy="43" r="8" fill="#2457e6"/>
+  <path d="M44.5 43.2l2.2 2.2 4.2-5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
