@@ -1,0 +1,18 @@
+{
+  "name": "EarthSCIgen — Automatic Earth Science Preprint Generator",
+  "short_name": "EarthSCIgen",
+  "description": "A transparent, browser-only generator for synthetic IEEE-style Earth Science preprint scaffolds.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f1ea",
+  "theme_color": "#17233d",
+  "icons": [
+    {
+      "src": "./assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
