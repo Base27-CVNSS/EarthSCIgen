@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="vi" data-theme="editorial">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17233d">
+    <meta
+      name="description"
+      content="EarthSCIgen — trình tạo bản thảo preprint Khoa học Trái đất theo bố cục IEEE, chạy hoàn toàn trong trình duyệt."
+    >
+    <title>EarthSCIgen — Automatic Earth Science Preprint Generator</title>
+    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Chuyển đến nội dung chính</a>
+
+    <header class="app-header">
+      <a class="brand" href="./" aria-label="EarthSCIgen — trang chủ">
+        <img src="./assets/logo.svg" alt="" width="38" height="38">
+        <span>
+          <strong>EarthSCIgen</strong>
+          <small>v0.1.0 · Browser edition</small>
+        </span>
+      </a>
+
+      <nav class="stage-nav" aria-label="Quy trình tạo">
+        <span class="stage-pill is-active"><b>01</b> Cấu hình</span>
+        <span class="stage-pill"><b>02</b> Kiểm tra</span>
+        <span class="stage-pill"><b>03</b> Xuất bản nháp</span>
+      </nav>
+
+      <div class="header-actions">
+        <div class="theme-switcher" role="group" aria-label="Chọn thiết kế giao diện">
+          <button class="theme-button is-active" type="button" data-theme-value="editorial" title="Editorial">
+            <span aria-hidden="true">E</span><span class="sr-only">Editorial</span>
+          </button>
+          <button class="theme-button" type="button" data-theme-value="atlas" title="Atlas">
+            <span aria-hidden="true">A</span><span class="sr-only">Atlas</span>
+          </button>
+          <button class="theme-button" type="button" data-theme-value="strata" title="Strata">
+            <span aria-hidden="true">S</span><span class="sr-only">Strata</span>
+          </button>
+        </div>
+        <span class="synthetic-chip">SYNTHETIC DRAFT</span>
+        <button class="button button-primary header-generate" type="button" data-action="generate">
+          Tạo bản nháp
+        </button>
+      </div>
+    </header>
+
+    <main id="workspace" class="workspace">
+      <section class="configuration" aria-labelledby="studio-title">
+        <div class="hero-copy">
+          <div class="eyebrow-row">
+            <span class="eyebrow">AUTOMATIC EARTH SCIENCE PREPRINT GENERATOR</span>
+            <span class="local-badge">100% LOCAL</span>
+          </div>
+          <h1 id="studio-title">From seed to a transparent scientific scaffold.</h1>
+          <p>
+            Tạo bản thảo IEEE hai cột để giảng dạy, thử nghiệm và lập dàn ý.
+            Không dữ liệu nào rời khỏi trình duyệt của bạn.
+          </p>
+        </div>
+
+        <form id="generator-form" novalidate>
+          <div class="config-grid">
+            <section class="config-card topic-card" aria-labelledby="topic-heading">
+              <div class="card-heading">
+                <div>
+                  <span class="card-index">01</span>
+                  <div>
+                    <p class="card-kicker">DOMAIN MODULE</p>
+                    <h2 id="topic-heading">Chọn chuyên ngành</h2>
+                  </div>
+                </div>
+                <span id="topic-state" class="card-state">Remote Sensing</span>
+              </div>
+
+              <div class="topic-options" role="radiogroup" aria-label="Chuyên ngành Khoa học Trái đất">
+                <button class="topic-option is-selected" type="button" role="radio" aria-checked="true" data-topic="remote_sensing">
+                  <span class="topic-glyph" aria-hidden="true">RS</span>
+                  <span><strong>Remote Sensing</strong><small>Ảnh vệ tinh & phân loại</small></span>
+                </button>
+                <button class="topic-option" type="button" role="radio" aria-checked="false" data-topic="geology">
+                  <span class="topic-glyph" aria-hidden="true">GL</span>
+                  <span><strong>Geology</strong><small>Thạch học & địa tầng</small></span>
+                </button>
+                <button class="topic-option" type="button" role="radio" aria-checked="false" data-topic="hydrology">
+                  <span class="topic-glyph" aria-hidden="true">HY</span>
+                  <span><strong>Hydrology</strong><small>Lưu vực & dòng chảy</small></span>
+                </button>
+                <button class="topic-option" type="button" role="radio" aria-checked="false" data-topic="climate">
+                  <span class="topic-glyph" aria-hidden="true">CL</span>
+                  <span><strong>Climate Science</strong><small>Khí hậu & cực đoan</small></span>
+                </button>
+                <button class="topic-option" type="button" role="radio" aria-checked="false" data-topic="geomorphology">
+                  <span class="topic-glyph" aria-hidden="true">GM</span>
+                  <span><strong>Geomorphology</strong><small>Địa mạo & địa hình</small></span>
+                </button>
+                <button class="topic-option" type="button" role="radio" aria-checked="false" data-topic="geophysics">
+                  <span class="topic-glyph" aria-hidden="true">GP</span>
+                  <span><strong>Geophysics</strong><small>Địa chấn & trường thế</small></span>
+                </button>
+              </div>
+              <input id="topic" name="topic" type="hidden" value="remote_sensing">
+            </section>
+
+            <section class="config-card metadata-card" aria-labelledby="metadata-heading">
+              <div class="card-heading">
+                <div>
+                  <span class="card-index">02</span>
+                  <div>
+                    <p class="card-kicker">AUTHORSHIP</p>
+                    <h2 id="metadata-heading">Metadata bài viết</h2>
+                  </div>
+                </div>
+                <span class="privacy-note">Chỉ lưu trong phiên</span>
+              </div>
+
+              <label class="field field-wide">
+                <span>Tiêu đề</span>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  maxlength="180"
+                  value="A Grammar-Guided Framework for Transparent Earth Science Preprints"
+                  autocomplete="off"
+                >
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span>Tác giả</span>
+                  <input id="author" name="author" type="text" maxlength="100" value="Long Ngo" autocomplete="name">
+                </label>
+                <label class="field">
+                  <span>Email</span>
+                  <input id="email" name="email" type="email" maxlength="120" value="contact@example.org" autocomplete="email">
+                </label>
+              </div>
+              <label class="field field-wide">
+                <span>Đơn vị</span>
+                <input
+                  id="affiliation"
+                  name="affiliation"
+                  type="text"
+                  maxlength="160"
+                  value="Independent Earth Science Researcher"
+                  autocomplete="organization"
+                >
+              </label>
+            </section>
+
+            <section class="config-card document-card" aria-labelledby="document-heading">
+              <div class="card-heading">
+                <div>
+                  <span class="card-index">03</span>
+                  <div>
+                    <p class="card-kicker">REPRODUCIBILITY</p>
+                    <h2 id="document-heading">Cấu hình tài liệu</h2>
+                  </div>
+                </div>
+                <span class="a4-label">A4 · IEEE 2-COLUMN</span>
+              </div>
+
+              <div class="document-controls">
+                <div>
+                  <span class="control-label">Độ dài mục tiêu</span>
+                  <div class="segment-control" role="radiogroup" aria-label="Số trang">
+                    <button type="button" role="radio" aria-checked="false" data-pages="6">6 trang</button>
+                    <button class="is-selected" type="button" role="radio" aria-checked="true" data-pages="7">7 trang</button>
+                    <button type="button" role="radio" aria-checked="false" data-pages="8">8 trang</button>
+                  </div>
+                </div>
+                <label class="field seed-field">
+                  <span>Seed</span>
+                  <div class="input-with-action">
+                    <input id="seed" name="seed" type="number" min="1" max="2147483647" step="1" value="20260724">
+                    <button id="randomize-seed" type="button" title="Tạo seed mới" aria-label="Tạo seed mới">↻</button>
+                  </div>
+                </label>
+              </div>
+              <input id="pages" name="pages" type="hidden" value="7">
+
+              <div class="output-strip">
+                <span class="control-label">Đầu ra tích hợp</span>
+                <div class="format-list" aria-label="Các định dạng đầu ra">
+                  <span><b>HTML</b> độc lập</span>
+                  <span><b>LaTeX</b> IEEEtran</span>
+                  <span><b>JSON</b> manifest</span>
+                  <span><b>PDF</b> qua trình duyệt</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="config-card integrity-card" aria-labelledby="integrity-heading">
+              <div class="card-heading">
+                <div>
+                  <span class="card-index">04</span>
+                  <div>
+                    <p class="card-kicker">SAFETY GATE</p>
+                    <h2 id="integrity-heading">Integrity checks</h2>
+                  </div>
+                </div>
+                <span id="integrity-score" class="score-badge">7/7 PASS</span>
+              </div>
+
+              <ul id="integrity-list" class="integrity-list" aria-live="polite">
+                <li data-check="title"><span>✓</span> Tiêu đề và tác giả hợp lệ</li>
+                <li data-check="email"><span>✓</span> Email có cấu trúc hợp lệ</li>
+                <li data-check="seed"><span>✓</span> Seed tái lập nằm trong giới hạn</li>
+                <li data-check="pages"><span>✓</span> Độ dài giới hạn 6–8 trang A4</li>
+                <li data-check="warning"><span>✓</span> Cảnh báo synthetic đã khóa</li>
+                <li data-check="references"><span>✓</span> Không sinh DOI hoặc nguồn giả</li>
+                <li data-check="privacy"><span>✓</span> Không network request / analytics</li>
+              </ul>
+              <p class="integrity-note">
+                EarthSCIgen tạo khung tài liệu minh bạch; không tạo bằng chứng khoa học,
+                kết quả quan trắc hoặc tuyên bố đã được phản biện.
+              </p>
+            </section>
+          </div>
+
+          <section class="build-console" aria-labelledby="build-heading">
+            <div class="build-summary">
+              <div>
+                <p class="card-kicker">GENERATION PIPELINE</p>
+                <h2 id="build-heading">Sẵn sàng tạo bản nháp</h2>
+              </div>
+              <strong id="progress-value">0%</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+            <div class="build-actions">
+              <button class="button button-primary" type="button" data-action="generate">Tạo bản nháp có kiểm soát</button>
+              <button class="button button-secondary" id="reset-button" type="button">Đặt lại log</button>
+              <span id="build-status" role="status">Preview đang cập nhật theo thời gian thực.</span>
+            </div>
+            <ol id="progress-log" class="progress-log" aria-live="polite">
+              <li><time>READY</time><span>Chờ lệnh tạo; cấu hình hiện tại đã được kiểm tra.</span></li>
+            </ol>
+          </section>
+        </form>
+      </section>
+
+      <aside class="preview-panel" aria-labelledby="preview-heading">
+        <div class="preview-toolbar">
+          <div>
+            <p class="card-kicker">LIVE IEEE OUTLINE</p>
+            <h2 id="preview-heading">Bản xem trước A4</h2>
+          </div>
+          <div class="preview-actions">
+            <button class="export-button" type="button" data-export="html">HTML</button>
+            <button class="export-button" type="button" data-export="tex">LaTeX</button>
+            <button class="export-button" type="button" data-export="json">Manifest</button>
+            <button class="export-button is-primary" id="print-button" type="button">In / PDF</button>
+          </div>
+        </div>
+
+        <div class="preview-meta">
+          <span><i class="status-dot"></i> Live preview</span>
+          <span id="page-count-label">7 trang · A4</span>
+          <span id="seed-label">Seed 20260724</span>
+        </div>
+
+        <div id="paper-viewport" class="paper-viewport">
+          <div id="paper-stack" class="paper-stack" aria-label="Bản xem trước tài liệu IEEE"></div>
+        </div>
+
+        <div class="preview-footer">
+          <p>
+            <strong>Minh bạch mặc định.</strong>
+            Cảnh báo synthetic được nhúng vào giao diện, HTML, LaTeX, manifest và bản in.
+          </p>
+          <a href="https://github.com/Base27-CVNSS/EarthSCIgen" rel="noreferrer">Mã nguồn MIT ↗</a>
+        </div>
+      </aside>
+    </main>
+
+    <noscript>
+      <div class="noscript-warning">
+        EarthSCIgen cần JavaScript để tạo preview và tệp xuất, nhưng không cần máy chủ hoặc kết nối API.
+      </div>
+    </noscript>
+  </body>
+</html>
